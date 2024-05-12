@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+  <head>
+    <title>Endovier Weltkarte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scripts/leaflet.css">
+    <script src="scripts/leaflet.js"></script>
+  </head>
+  
+  <body style="height: 100%;margin: 0;">
+    <div id="map" style="width: 100%; height: 100%; background: #000000;"></div>
+    <script type="text/javascript">
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Creating the Map
+    var map = L.map('map').setView([19, -27], 5);
+    L.tileLayer('map/{z}/{x}/{y}.png', {
+      continuousWorld: false,
+      noWrap: true,
+      minZoom: 4,
+      maxZoom: 6,
+    }).addTo(map);
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Coordinate Finder --> kann fuer finale Version rausgeloescht werden!
+    var marker = L.marker([0, 0], {
+      draggable: true,
+    }).addTo(map);
+    marker.bindPopup('LatLng Marker').openPopup();
+    marker.on('dragend', function(e) {
+      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+    });
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Optionen fuer Tooltips (also das, was angezeigt wird, wenn man mit der Maus drueber faehrt)
+    var tooltipOptions = {
+        permanent: false, // Der Tooltip wird nicht staendig angezeigt, sondern nur bei Mouseover
+        direction: 'right', // Die Richtung, in der der Tooltip angezeigt wird
+        className: 'custom-tooltip' // Benutzerdefinierte CSS-Klasse fuer Styling
+      };
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Transparente Marker (transparentes "mm.png") mit vier verschiedenen Groessen
+
+    var mm0 = L.icon({
+		iconUrl:       'icons/mm.png',
+		iconRetinaUrl: 'icons/mm.png',
+		iconSize:    [15, 15],
+		iconAnchor:  [8, 8],
+		popupAnchor: [0, -5],
+		tooltipAnchor: [5, 0],
+	});
+
+    var mm1 = L.icon({
+		iconUrl:       'icons/mm.png',
+		iconRetinaUrl: 'icons/mm.png',
+		iconSize:    [25, 25],
+		iconAnchor:  [13, 13],
+		popupAnchor: [0, -15],
+		tooltipAnchor: [15, 0],
+	});
+
+    var mm2 = L.icon({
+		iconUrl:       'icons/mm.png',
+		iconRetinaUrl: 'icons/mm.png',
+		iconSize:    [35, 35],
+		iconAnchor:  [18, 18],
+		popupAnchor: [0, -15],
+		tooltipAnchor: [15, 0],
+	});
+
+    var mm3 = L.icon({
+		iconUrl:       'icons/mm.png',
+		iconRetinaUrl: 'icons/mm.png',
+		iconSize:    [50, 50],
+		iconAnchor:  [25, 25],
+		popupAnchor: [0, -15],
+		tooltipAnchor: [15, 0],
+	});
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Marker: den Code erstelle ich direkt in meinem Google Sheet --> zum aendern einfach die gesamte Code-Spalte kopieren und statt folgendem Inhalt einfuegen:
+
+var ar_cinior = L.marker([21.166484, -31.464844], {icon: mm3}).bindPopup('<b>Eryn Cinior</b>').bindTooltip('Eryn Cinior', tooltipOptions).addTo(map);
+var ar_gulthias = L.marker([20.961440, -29.794922], {icon: mm3}).bindPopup('<b>Eryn Gulthias</b>').bindTooltip('Eryn Gulthias', tooltipOptions).addTo(map);
+var de_eisenhammer = L.marker([24.226929, -32.805176], {icon: mm1}).bindPopup('<b>Eisenhammer-Mine</b>').bindTooltip('Eisenhammer-Mine', tooltipOptions).addTo(map);
+var de_eisenklamm = L.marker([22.836946, -31.420898], {icon: mm1}).bindPopup('<b>Eisenklamm</b>').bindTooltip('Eisenklamm', tooltipOptions).addTo(map);
+var de_fisker = L.marker([23.301901, -32.519531], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var de_hammerfels = L.marker([23.221155, -33.288574], {icon: mm2}).bindPopup('<b>Hammerfels</b>').bindTooltip('Hammerfels', tooltipOptions).addTo(map);
+var de_hammerlokh = L.marker([23.825551, -32.124023], {icon: mm3}).bindPopup('<b>Hammerlokh</b>').bindTooltip('Hammerlokh', tooltipOptions).addTo(map);
+var en_amang = L.marker([20.220966, -34.914551], {icon: mm1}).bindPopup('<b>Amang Fort</b>').bindTooltip('Amang Fort', tooltipOptions).addTo(map);
+var en_amun = L.marker([22.146708, -33.398438], {icon: mm1}).bindPopup('<b>Amun Tá</b>').bindTooltip('Amun Tá', tooltipOptions).addTo(map);
+var en_briforn = L.marker([18.020528, -32.519531], {icon: mm2}).bindPopup('<b>Briforn</b>').bindTooltip('Briforn', tooltipOptions).addTo(map);
+var en_caerpil = L.marker([14.157882, -20.654297], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_cotesesh = L.marker([13.987376, -23.422852], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_eisach = L.marker([22.998852, -28.959961], {icon: mm1}).bindPopup('<b>Eisach</b>').bindTooltip('Eisach', tooltipOptions).addTo(map);
+var en_glenn = L.marker([12.189704, -15.117188], {icon: mm3}).bindPopup('<b>Glenn</b>').bindTooltip('Glenn', tooltipOptions).addTo(map);
+var en_lacdusse = L.marker([14.838612, -19.182129], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_lettov = L.marker([25.760320, -29.575195], {icon: mm1}).bindPopup('<b>Lettov</b>').bindTooltip('Lettov', tooltipOptions).addTo(map);
+var en_loin = L.marker([17.098792, -22.609863], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_lorett = L.marker([16.530898, -28.498535], {icon: mm3}).bindPopup('<b>Lorett</b>').bindTooltip('Lorett', tooltipOptions).addTo(map);
+var en_marktalas = L.marker([22.126355, -29.025879], {icon: mm1}).bindPopup('<b>Marktalas</b>').bindTooltip('Marktalas', tooltipOptions).addTo(map);
+var en_marquelle = L.marker([17.329664, -16.391602], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_pelfurt = L.marker([23.926013, -29.047852], {icon: mm1}).bindPopup('<b>Pelfurt</b>').bindTooltip('Pelfurt', tooltipOptions).addTo(map);
+var en_portrynia = L.marker([17.119793, -14.370117], {icon: mm2}).bindPopup('<b>Port Rynia</b>').bindTooltip('Port Rynia', tooltipOptions).addTo(map);
+var en_portwestyn = L.marker([19.787380, -20.698242], {icon: mm2}).bindPopup('<b>Port Westyn</b>').bindTooltip('Port Westyn', tooltipOptions).addTo(map);
+var en_rioposa = L.marker([14.008696, -14.831543], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_truss = L.marker([12.554564, -31.442871], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_vadesh = L.marker([16.045813, -19.204102], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_virt = L.marker([14.98724, -30.541992], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var no_kriegslager = L.marker([28.381735, -28.388672], {icon: mm1}).bindPopup('<b>Kriegslager der Nordlinge</b>').bindTooltip('Kriegslager der Nordlinge', tooltipOptions).addTo(map);
+var ns_1 = L.marker([29.094577, -33.815918], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ns_2 = L.marker([21.145992, -39.067383], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ns_3 = L.marker([22.471955, -37.770996], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ns_4 = L.marker([21.514407, -37.441406], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ns_5 = L.marker([16.678293, -37.067871], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ns_6 = L.marker([14.668626, -39.70459], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ns_7 = L.marker([15.919074, -36.584473], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ns_8 = L.marker([13.004558, -35.441895], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ss_sylebakk = L.marker([9.340672, -33.991699], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ss_sylegull = L.marker([7.819847, -35.134277], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ss_sylekivv = L.marker([8.189742, -33.640137], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ss_sylester = L.marker([11.436955, -33.574219], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var ss_sylmarsyr = L.marker([10.422988, -34.16748], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var en_bordena = L.marker([9.427387, -11.293945], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var tbd_1 = L.marker([5.834616, -11.953125], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var tbd_2 = L.marker([6.293459, -19.753418], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var tbd_3 = L.marker([3.491489, -26.916504], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var tbd_4 = L.marker([-3.118576, -27.949219], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindPopup('<b>?</b>').bindTooltip('?', tooltipOptions).addTo(map);
+    </script>
+  </body>
+</html>
