@@ -75,7 +75,7 @@
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Marker: den Code erstelle ich direkt in meinem Google Sheet --> zum aendern einfach die gesamte Code-Spalte kopieren und statt folgendem Inhalt einfuegen:
 
-var ar_cinior = L.marker([21.166484, -31.464844], {icon: mm3}).bindPopup("<b>Eryn Cinior</b><details> <summary>Titel vom Spoiler</summary> Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler <br> Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler </details>").bindTooltip('Eryn Cinior', tooltipOptions).addTo(map);
+var ar_cinior = L.marker([21.166484, -31.464844], {icon: mm3}).bindPopup("<b>Eryn Cinior</b><details> <summary>Titel vom Spoiler</summary> Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler Text vom Spoiler Text von Spoiler Text vom Spoiler </details>").bindTooltip('Eryn Cinior', tooltipOptions).addTo(map);
 var ar_gulthias = L.marker([20.961440, -29.794922], {icon: mm3}).bindPopup("<b>Eryn Gulthias</b> <br> <a href='https://github.com/Stafter/Endovier/wiki/Eryn-Gulthias#die-neue-passstra%C3%9Fe' target='_blank'>Die neue Passstraße</a> <br> <a href='https://github.com/Stafter/Endovier/wiki/Eryn-Gulthias#arnad-eledhrim---das-reich-der-elben' target='_blank'>Arnad Eledhrim - das Reich der Elben</a>").bindTooltip('Eryn Gulthias', tooltipOptions).addTo(map);
 var de_eisenhammer = L.marker([24.226929, -32.805176], {icon: mm1}).bindPopup("<b>Eisenhammer-Mine</b>").bindTooltip('Eisenhammer-Mine', tooltipOptions).addTo(map);
 var de_eisenklamm = L.marker([22.836946, -31.420898], {icon: mm1}).bindPopup("<b>Eisenklamm</b>").bindTooltip('Eisenklamm', tooltipOptions).addTo(map);
@@ -120,46 +120,6 @@ var tbd_2 = L.marker([6.293459, -19.753418], {icon: mm0}).bindTooltip('?', toolt
 var tbd_3 = L.marker([3.491489, -26.916504], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_4 = L.marker([-3.118576, -27.949219], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
-
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Popups mit clickable text
-
-// Funktion zum Hinzufügen des Event-Listeners für klickbare Texte im Popup
-function addPopupEventListener(marker) {
-    marker.on('popupopen', function() {
-        var popup = marker.getPopup(); // Zugriff auf das Popup-Element
-        var clickableTexts = popup.getElement().querySelectorAll('.clickable-text'); // Alle klickbaren Texte im Popup auswählen
-        clickableTexts.forEach(function(clickableText) { // Für jeden klickbaren Text:
-            clickableText.addEventListener('click', function() { // Klick-Event-Listener hinzufügen
-                var info = clickableText.getAttribute('data-info'); // Datenattribut 'data-info' des geklickten Textes abrufen
-                var newPopupContent = "<b>Weitere Informationen</b><p>Hier sind Details für " + info + "...</p>"; // Neuer Popup-Inhalt mit spezifischen Informationen
-                var newPopup = L.popup({ closeOnClick: false }) // Neues Popup erstellen
-                    .setLatLng(marker.getLatLng()) // Neue Popup-Position setzen (gleiche Position wie der ursprüngliche Marker)
-                    .setContent(newPopupContent) // Neuen Inhalt setzen
-                    .openOn(map); // Neues Popup auf der Karte öffnen
-            });
-        });
-    });
-}
-
-// Erstellen und Hinzufügen der Marker zur Karte
-var de_hammerlokh = L.marker([23.825551, -32.124023], {icon: mm3}).bindPopup(
-    "<b>Hammerlokh</b><br>" + // Titel im Popup
-    "<p class='clickable-text' data-info='Info 1'>Klicken Sie hier für Info 1</p><br>" + // Erster klickbarer Text mit Datenattribut 'Info 1'
-    "<p class='clickable-text' data-info='Info 2'>Klicken Sie hier für Info 2</p>" // Zweiter klickbarer Text mit Datenattribut 'Info 2'
-).bindTooltip('Hammerlokh', tooltipOptions).addTo(map);
-
-// Event-Listener für den ersten Marker hinzufügen
-addPopupEventListener(de_hammerlokh);
-
-var en_amang = L.marker([20.220966, -34.914551], {icon: mm1}).bindPopup(
-    "<b>Amang Fort</b><br>" + // Titel im Popup
-    "<p class='clickable-text' data-info='Info 3'>Klicken Sie hier für Info 3</p><br>" + // Erster klickbarer Text mit Datenattribut 'Info 3'
-    "<p class='clickable-text' data-info='Info 4'>Klicken Sie hier für Info 4</p>" // Zweiter klickbarer Text mit Datenattribut 'Info 4'
-).bindTooltip('Amang Fort', tooltipOptions).addTo(map);
-
-// Event-Listener für den zweiten Marker hinzufügen
-addPopupEventListener(en_amang);
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
