@@ -129,7 +129,9 @@ var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindTooltip('?', toolt
         function resizePopup(popup) {
             var content = popup.getElement().querySelector('.leaflet-popup-content');
             content.style.width = 'auto';  // Setze die Breite auf auto
-            content.style.maxWidth = 'none';  // Entferne die maximale Breite
+            content.style.whiteSpace = 'normal';  // Erlaube den Zeilenumbruch innerhalb des Inhalts
+            var newWidth = content.scrollWidth + 'px';  // Berechne die neue Breite basierend auf dem scrollWidth
+            content.style.width = newWidth;  // Setze die neue Breite
             popup.update();  // Aktualisiere das Popup
         }
 
