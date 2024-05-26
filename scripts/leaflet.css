@@ -492,7 +492,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	min-height: 30px;
 	width: 500px;
 	max-height: 400px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	}
 .leaflet-popup-content p {
 	margin: 17px 0;
