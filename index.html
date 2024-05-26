@@ -81,8 +81,6 @@ var de_eisenhammer = L.marker([24.226929, -32.805176], {icon: mm1}).bindPopup("<
 var de_eisenklamm = L.marker([22.836946, -31.420898], {icon: mm1}).bindPopup("<b>Eisenklamm</b>").bindTooltip('Eisenklamm', tooltipOptions).addTo(map);
 var de_fisker = L.marker([23.301901, -32.519531], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var de_hammerfels = L.marker([23.221155, -33.288574], {icon: mm2}).bindPopup("<b>Hammerfels</b>").bindTooltip('Hammerfels', tooltipOptions).addTo(map);
-var de_hammerlokh = L.marker([23.825551, -32.124023], {icon: mm3}).bindPopup("<b>Hammerlokh</b>").bindTooltip('Hammerlokh', tooltipOptions).addTo(map);
-var en_amang = L.marker([20.220966, -34.914551], {icon: mm1}).bindPopup("<b>Amang Fort</b>").bindTooltip('Amang Fort', tooltipOptions).addTo(map);
 var en_amun = L.marker([22.146708, -33.398438], {icon: mm1}).bindPopup("<b>Amun Tá</b>").bindTooltip('Amun Tá', tooltipOptions).addTo(map);
 var en_briforn = L.marker([18.020528, -32.519531], {icon: mm2}).bindPopup("<b>Briforn</b>").bindTooltip('Briforn', tooltipOptions).addTo(map);
 var en_caerpil = L.marker([14.157882, -20.654297], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
@@ -124,25 +122,46 @@ var tbd_4 = L.marker([-3.118576, -27.949219], {icon: mm0}).bindTooltip('?', tool
 var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Popup: Größe vom Popup wird (für die hier angeführten Marker) dynamisch angepasst, sobald ein Spoiler im Popup geöffnet oder geschlossen wird! (Laut chatGPT, mal sehen, ob es klappt)
+//Popups mit clickable text
 
-        function resizePopup(popup) {
-            var content = popup.getElement().querySelector('.leaflet-popup-content');
-            content.style.width = 'auto';  // Setze die Breite auf auto
-            content.style.whiteSpace = 'normal';  // Erlaube den Zeilenumbruch innerhalb des Inhalts
-            var newWidth = content.scrollWidth + 'px';  // Berechne die neue Breite basierend auf dem scrollWidth
-            content.style.width = newWidth;  // Setze die neue Breite
-            popup.update();  // Aktualisiere das Popup
-        }
-
-        ar_cinior.on('popupopen', function() {
-            var popup = ar_cinior.getPopup();
-            var details = popup.getElement().querySelector('#spoiler');
-            details.addEventListener('toggle', function() {
-                resizePopup(popup);
+// Funktion zum Hinzufügen des Event-Listeners für klickbare Texte im Popup
+function addPopupEventListener(marker) {
+    marker.on('popupopen', function() {
+        var popup = marker.getPopup(); // Zugriff auf das Popup-Element
+        var clickableTexts = popup.getElement().querySelectorAll('.clickable-text'); // Alle klickbaren Texte im Popup auswählen
+        clickableTexts.forEach(function(clickableText) { // Für jeden klickbaren Text:
+            clickableText.addEventListener('click', function() { // Klick-Event-Listener hinzufügen
+                var info = clickableText.getAttribute('data-info'); // Datenattribut 'data-info' des geklickten Textes abrufen
+                var newPopupContent = "<b>Weitere Informationen</b><p>Hier sind Details für " + info + "...</p>"; // Neuer Popup-Inhalt mit spezifischen Informationen
+                var newPopup = L.popup({ closeOnClick: false }) // Neues Popup erstellen
+                    .setLatLng(marker.getLatLng()) // Neue Popup-Position setzen (gleiche Position wie der ursprüngliche Marker)
+                    .setContent(newPopupContent) // Neuen Inhalt setzen
+                    .openOn(map); // Neues Popup auf der Karte öffnen
             });
         });
+    });
+}
 
+// Erstellen und Hinzufügen der Marker zur Karte
+var de_hammerlokh = L.marker([23.825551, -32.124023], {icon: mm3}).bindPopup(
+    "<b>Hammerlokh</b><br>" + // Titel im Popup
+    "<p class='clickable-text' data-info='Info 1'>Klicken Sie hier für Info 1</p><br>" + // Erster klickbarer Text mit Datenattribut 'Info 1'
+    "<p class='clickable-text' data-info='Info 2'>Klicken Sie hier für Info 2</p>" // Zweiter klickbarer Text mit Datenattribut 'Info 2'
+).bindTooltip('Hammerlokh', tooltipOptions).addTo(map);
+
+// Event-Listener für den ersten Marker hinzufügen
+addPopupEventListener(de_hammerlokh);
+
+var en_amang = L.marker([20.220966, -34.914551], {icon: mm1}).bindPopup(
+    "<b>Amang Fort</b><br>" + // Titel im Popup
+    "<p class='clickable-text' data-info='Info 3'>Klicken Sie hier für Info 3</p><br>" + // Erster klickbarer Text mit Datenattribut 'Info 3'
+    "<p class='clickable-text' data-info='Info 4'>Klicken Sie hier für Info 4</p>" // Zweiter klickbarer Text mit Datenattribut 'Info 4'
+).bindTooltip('Amang Fort', tooltipOptions).addTo(map);
+
+// Event-Listener für den zweiten Marker hinzufügen
+addPopupEventListener(en_amang);
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     </script>
   </body>
