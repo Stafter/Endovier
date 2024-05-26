@@ -128,9 +128,10 @@ var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindTooltip('?', toolt
 
 ar_cinior.on('popupopen', function() {
     var popup = ar_cinior.getPopup();
-    var details = popup.getElement().querySelector('details');
+    var details = popup.getElement().querySelector('#spoiler');
     details.addEventListener('toggle', function() {
-        popup.update();
+        // Setze den gleichen Inhalt neu, um die Größe des Popups zu aktualisieren
+        popup.setContent(popup.getContent());
     });
 });
 
