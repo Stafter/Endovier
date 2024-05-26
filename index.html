@@ -126,14 +126,20 @@ var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindTooltip('?', toolt
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Popup: Größe vom Popup wird (für die hier angeführten Marker) dynamisch angepasst, sobald ein Spoiler im Popup geöffnet oder geschlossen wird! (Laut chatGPT, mal sehen, ob es klappt)
 
-ar_cinior.on('popupopen', function() {
-    var popup = ar_cinior.getPopup();
-    var details = popup.getElement().querySelector('#spoiler');
-    details.addEventListener('toggle', function() {
-        // Setze den gleichen Inhalt neu, um die Größe des Popups zu aktualisieren
-        popup.setContent(popup.getContent());
-    });
-});
+        function resizePopup(popup) {
+            var content = popup.getElement().querySelector('.leaflet-popup-content');
+            content.style.width = 'auto';  // Setze die Breite auf auto
+            content.style.maxWidth = 'none';  // Entferne die maximale Breite
+            popup.update();  // Aktualisiere das Popup
+        }
+
+        ar_cinior.on('popupopen', function() {
+            var popup = ar_cinior.getPopup();
+            var details = popup.getElement().querySelector('#spoiler');
+            details.addEventListener('toggle', function() {
+                resizePopup(popup);
+            });
+        });
 
 
     </script>
