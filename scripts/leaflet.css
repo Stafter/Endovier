@@ -491,8 +491,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	font-size: 1.08333em;
 	min-height: 30px;
 	max-height: 300px;
-	min-width: 100px;
-	max-width: 800px;
+	width: auto;
+	max-width: none;
 	overflow-y: auto;
 	}
 .leaflet-popup-content p {
