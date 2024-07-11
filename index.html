@@ -141,6 +141,12 @@ var tbd_11 = L.marker([, ], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(
 var map_prompt_1 = L.marker([15.390136, -33.33252], {icon: mm2}).bindTooltip('Map Prompt #1', tooltipOptions).addTo(map);
 
 
+    var marker1 = L.marker([15.390136, -33.33252]).addTo(map);
+    marker.bindPopup('LatLng Marker').openPopup();
+    marker.on('dragend', function(e) {
+      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+    });  
+
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
