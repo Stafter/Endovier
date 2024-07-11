@@ -23,7 +23,13 @@
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Coordinate Finder --> kann fuer finale Version rausgeloescht werden!
-
+    var marker = L.marker([0, 0], {
+      draggable: true,
+    }).addTo(map);
+    marker.bindPopup('LatLng Marker').openPopup();
+    marker.on('dragend', function(e) {
+      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+    });
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Optionen fuer Tooltips (also das, was angezeigt wird, wenn man mit der Maus drueber faehrt)
