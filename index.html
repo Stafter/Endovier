@@ -22,14 +22,14 @@
     }).addTo(map);
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Coordinate Finder --> kann fuer finale Version rausgeloescht werden!
-    var marker = L.marker([0, 0], {
-      draggable: true,
-    }).addTo(map);
-    marker.bindPopup('LatLng Marker').openPopup();
-    marker.on('dragend', function(e) {
-      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
-    });
+// Coordinate Finder --> wenn benötigt, einfach die // vor den einzelnen Zeilen entfernen!
+//    var marker = L.marker([0, 0], {
+//     draggable: true,
+//    }).addTo(map);
+//    marker.bindPopup('LatLng Marker').openPopup();
+//    marker.on('dragend', function(e) {
+//      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+//    });
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Optionen fuer Tooltips (also das, was angezeigt wird, wenn man mit der Maus drueber faehrt)
@@ -136,6 +136,14 @@ var tbd_10 = L.marker([, ], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(
 var tbd_11 = L.marker([, ], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Map-Prompt: Marker, der anzeigt, wo die neue Map-Prompt zu erstellen ist. Wenn etwas gut genug ist, dann wird es in die Karte integriert!
+
+var map_prompt_1 = L.marker([15.390136, -33.33252], {icon: mm1}).bindTooltip('Map Prompt #1', tooltipOptions).addTo(map);
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
     </script>
   </body>
