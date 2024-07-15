@@ -23,13 +23,13 @@
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Coordinate Finder --> wenn benötigt, einfach die // vor den einzelnen Zeilen entfernen!
-    var marker = L.marker([0, 0], {
-     draggable: true,
-    }).addTo(map);
-    marker.bindPopup('LatLng Marker').openPopup();
-    marker.on('dragend', function(e) {
-      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
-    });
+//    var marker = L.marker([0, 0], {
+//     draggable: true,
+//    }).addTo(map);
+//    marker.bindPopup('LatLng Marker').openPopup();
+//    marker.on('dragend', function(e) {
+//      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+//    });
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Optionen fuer Tooltips (also das, was angezeigt wird, wenn man mit der Maus drueber faehrt)
@@ -128,7 +128,7 @@ var tbd_2 = L.marker([6.293459, -19.753418], {icon: mm0}).bindTooltip('?', toolt
 var tbd_3 = L.marker([3.491489, -26.916504], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_4 = L.marker([-3.118576, -27.949219], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
-var tbd_6 = L.marker([15.390136, -33.33252], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
+var prompt_1 = L.marker([15.390136, -33.33252], {icon: mm0}).bindPopup("<b>Map Prompt: Was kann an diesem Seeufer entdeckt werden? </b>Schau dir diesen Ort auf der Karte an. Stell dir vor, du wanderst dort umher und plötzlich siehst du... [ohne ChatGPT]").bindTooltip('Session Prompt', tooltipOptions).addTo(map);
 var tbd_7 = L.marker([, ], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_8 = L.marker([, ], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_9 = L.marker([, ], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
