@@ -23,13 +23,13 @@
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Coordinate Finder --> wenn benötigt, einfach die // vor den einzelnen Zeilen entfernen!
-    var marker = L.marker([0, 0], {
-     draggable: true,
-    }).addTo(map);
-    marker.bindPopup('LatLng Marker').openPopup();
-    marker.on('dragend', function(e) {
-      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
-    });
+//    var marker = L.marker([0, 0], {
+//     draggable: true,
+//    }).addTo(map);
+//    marker.bindPopup('LatLng Marker').openPopup();
+//    marker.on('dragend', function(e) {
+//      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+//    });
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Optionen fuer Tooltips (also das, was angezeigt wird, wenn man mit der Maus drueber faehrt)
@@ -128,7 +128,7 @@ var tbd_2 = L.marker([6.293459, -19.753418], {icon: mm0}).bindTooltip('?', toolt
 var tbd_3 = L.marker([3.491489, -26.916504], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_4 = L.marker([-3.118576, -27.949219], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
 var tbd_5 = L.marker([-5.397273, -35.48584], {icon: mm0}).bindTooltip('?', tooltipOptions).addTo(map);
-var en_lutara = L.marker([15.390136, -33.33252], {icon: mm1}).bindPopup("<b>Lutara </b> <br><br> Bei Lutara handelt es sich - wenn man über die massiven Stadtmauern hinwegsehen kann - um einen idyllischen Urlaubsort, der von vielen Reisenden besucht wird. Hier wird alles dafür getan, die Gäste (und ihr Geld) willkommen zu heißen. <br> Die Gegend ist vor allem bei Familien beliebt, da am Ufer des Sees ein Kinderferienlager veranstaltet wird. <br> Doch der See ist nicht allen Kindern ganz geheuer, seit die gruselige Statue (die noch dazu von hunderten von Knochen umgeben ist) eines Tages einem Mädchen zugeflüstert hat, dass sie den Kraken, der im See lebt, erlegen soll.").bindTooltip('Session Prompt', tooltipOptions).addTo(map);
+var en_lutara = L.marker([15.390136, -33.33252], {icon: mm1}).bindPopup("<b>Lutara </b> <br><br> Bei Lutara handelt es sich - wenn man über die massiven Stadtmauern hinwegsehen kann - um einen idyllischen Urlaubsort, der von vielen Reisenden besucht wird. Hier wird alles dafür getan, die Gäste (und ihr Geld) willkommen zu heißen. <br> Die Gegend ist vor allem bei Familien beliebt, da am Ufer des Sees ein Kinderferienlager veranstaltet wird. <br> Doch der See ist nicht allen Kindern ganz geheuer, seit die gruselige Statue (die noch dazu von hunderten von Knochen umgeben ist) eines Tages einem Mädchen zugeflüstert hat, dass sie den Kraken, der im See lebt, erlegen soll.").bindTooltip('Lutara', tooltipOptions).addTo(map);
 var ff_cair = L.marker([52.86913, 0.527344], {icon: mm0}).bindPopup("<b>Cair-Isbjörn </b>").bindTooltip('Cair-Isbjörn', tooltipOptions).addTo(map);
 var ff_ythryn = L.marker([54.889246, 2.241211], {icon: mm2}).bindPopup("<b>Ythryn </b>").bindTooltip('Ythryn', tooltipOptions).addTo(map);
 var ff_esthaven = L.marker([50.527397, -0.944824], {icon: mm0}).bindPopup("<b>Esthaven </b>").bindTooltip('Esthaven', tooltipOptions).addTo(map);
